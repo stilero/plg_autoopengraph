@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="content" method="upgrade">
+	<name>Content - AutoOpenGraph</name>
+	<author>Daniel Eliasson (joomla@stilero.com)</author>
+	<creationDate>2012-dec-27</creationDate>
+	<copyright>Copyright (c) 2012-dec-27 Stilero Webdesign (www.stilero.com). All rights reserved.</copyright>
+	<authorEmail>joomla@stilero.com</authorEmail>
+	<authorUrl>www.stilero.com</authorUrl>
+	<version>1.6</version>
+	<license>GPLv2</license>
+	<description>This plugin automatically adds OpenGraph Tags to your Joomla content.</description>
+	<files>
+		<filename plugin="autoopengraph">autoopengraph.php</filename>
+                <folder>autoopengraph</folder>
+	</files>
+	<languages folder="language">
+            <language tag="en-GB">en-GB.plg_content_autoopengraph.ini</language>
+        </languages>
+     <!-- Standard plugin parameters for Joomla! 1.5 -->    
+    <params>
+        <param name="og-title" type="list" default="1" label="PLG_CONTENT_AUTOOPENGRAPH_OGTITLE" description="PLG_CONTENT_AUTOOPENGRAPH_OGTITLE_DESC">
+            <option value="1">PLG_CONTENT_AUTOOPENGRAPH_ARTICLE_TITLE</option>
+            <option value="2">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM</option>
+            <option value="0">Off</option>
+        </param>        
+        <param name="og-title-custom" type="text"  default="" label="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_OGTITLE" description="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_OGTITLE_DESC"/>
+        <param type="spacer" />
+        <param name="og-type" type="list" default="article" label="PLG_CONTENT_AUTOOPENGRAPH_OGTYPE" description="PLG_CONTENT_AUTOOPENGRAPH_OGTYPE_DESC">
+            <option value="1">PLG_CONTENT_AUTOOPENGRAPH_ARTICLE</option>
+            <option value="2">PLG_CONTENT_AUTOOPENGRAPH_WEBSITE</option>
+            <option value="3">PLG_CONTENT_AUTOOPENGRAPH_BOOK</option>
+            <option value="4">PLG_CONTENT_AUTOOPENGRAPH_PROFILE</option>
+            <option value="5">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM</option>
+            <option value="0">Off</option>
+        </param>        
+        <param name="og-type-custom" type="text"  default="" label="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_OGTYPE" description="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_OGTYPE_DESC"/>
+        <param type="spacer" default="PLG_CONTENT_AUTOOPENGRAPH_OG_IMAGE_PRIO" />
+        <param name="og-img-prio1" type="list" default="4" label="PLG_CONTENT_AUTOOPENGRAPH_OGIMGPRIO1" description="PLG_CONTENT_AUTOOPENGRAPH_OGIMGPRIO1_DESC">
+            <option value="1">PLG_CONTENT_AUTOOPENGRAPH_FIRST_IMAGE_FOUND</option>
+            <option value="4">PLG_CONTENT_AUTOOPENGRAPH_IMAGE_WITH_CLASS</option>
+            <option value="5">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_IMAGE</option>
+            <option value="0">Off</option>
+        </param>
+        <param name="og-img-prio2" type="list" default="1" label="PLG_CONTENT_AUTOOPENGRAPH_OGIMGPRIO2" description="PLG_CONTENT_AUTOOPENGRAPH_OGIMGPRIO2_DESC">
+            <option value="1">PLG_CONTENT_AUTOOPENGRAPH_FIRST_IMAGE_FOUND</option>
+            <option value="4">PLG_CONTENT_AUTOOPENGRAPH_IMAGE_WITH_CLASS</option>
+            <option value="5">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_IMAGE</option>
+            <option value="0">Off</option>
+        </param>
+        <param name="og-img-prio3" type="list" default="5" label="PLG_CONTENT_AUTOOPENGRAPH_OGIMGPRIO3" description="PLG_CONTENT_AUTOOPENGRAPH_OGIMGPRIO3_DESC">
+            <option value="1">PLG_CONTENT_AUTOOPENGRAPH_FIRST_IMAGE_FOUND</option>
+            <option value="4">PLG_CONTENT_AUTOOPENGRAPH_IMAGE_WITH_CLASS</option>
+            <option value="5">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_IMAGE</option>
+            <option value="0">Off</option>
+        </param>
+        <param name="og-img-class" type="text"  default="ogimage" label="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_IMG_CLASS" description="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_IMG_CLASS_DESC"/>
+        <param name="og-img-custom" type="imagelist" directory="images/stories" default="" label="PLG_CONTENT_AUTOOPENGRAPH_SELECT_IMAGE" description="PLG_CONTENT_AUTOOPENGRAPH_SELECT_IMAGE_DESC"/>
+        <param type="spacer" />
+        <param name="og-desc" type="list" default="1" label="PLG_CONTENT_AUTOOPENGRAPH_OGDESC" description="PLG_CONTENT_AUTOOPENGRAPH_OGDESC_DESC">
+            <option value="1">PLG_CONTENT_AUTOOPENGRAPH_ARTICLE_METADESC</option>
+            <option value="2">PLG_CONTENT_AUTOOPENGRAPH_ARTICLE_INTROTEXT</option>
+            <option value="3">PLG_CONTENT_AUTOOPENGRAPH_SITE_DESC</option>
+            <option value="4">PLG_CONTENT_AUTOOPENGRAPH_CUSTOMDESC</option>
+            <option value="0">Off</option>
+        </param>        
+        <param name="og-desc-custom" type="text"  default="" label="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_OGDESC" description="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_OGDESC_DESC"/>
+        <param type="spacer" />
+        <param name="og-locale" type="list" default="1" label="PLG_CONTENT_AUTOOPENGRAPH_LOCALE" description="PLG_CONTENT_AUTOOPENGRAPH_LOCALE_DESC">
+            <option value="1">PLG_CONTENT_AUTOOPENGRAPH_SITE_LOCALE</option>
+            <option value="2">PLG_CONTENT_AUTOOPENGRAPH_ARTICLE_LOCALE</option>
+            <option value="3">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_LOCALE</option>
+            <option value="0">Off</option>
+        </param>        
+        <param name="og-locale-custom" type="languages" client="site" default="en-GB" label="PLG_CONTENT_AUTOOPENGRAPH_SELECT_LANGUAGE" description="PLG_CONTENT_AUTOOPENGRAPH_SELECT_LANGUAGE_DESC"/>
+        <param type="spacer" />
+        <param name="og-sitename" type="list" default="1" label="PLG_CONTENT_AUTOOPENGRAPH_SITENAME" description="PLG_CONTENT_AUTOOPENGRAPH_SITENAME_DESC">
+            <option value="1">PLG_CONTENT_AUTOOPENGRAPH_JOOMLA_SITENAME</option>
+            <option value="2">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_SITENAME</option>
+            <option value="0">Off</option>
+        </param>        
+        <param name="og-sitename-custom" type="text" default="" label="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_SITENAME" description="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_SITENAME_DESC"/>
+    </params>
+    <!-- Standard plugin parameters for Joomla! 1.6+ -->
+    <config>
+        <fields name="params">
+            <fieldset name="settings" label="PLG_CONTENT_AUTOOPENGRAPH_SETTINGS">
+                <field name="og-title" type="list" default="1" label="PLG_CONTENT_AUTOOPENGRAPH_OGTITLE" description="PLG_CONTENT_AUTOOPENGRAPH_OGTITLE_DESC">
+                    <option value="1">PLG_CONTENT_AUTOOPENGRAPH_ARTICLE_TITLE</option>
+                    <option value="2">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM</option>
+                    <option value="0">Off</option>
+                </field>        
+                <field name="og-title-custom" type="text"  default="" label="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_OGTITLE" description="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_OGTITLE_DESC"/>
+                <field type="spacer" label="PLG_CONTENT_AUTOOPENGRAPH_TITLE" hr="true" />
+                <field name="og-type" type="list" default="article" label="PLG_CONTENT_AUTOOPENGRAPH_OGTYPE" description="PLG_CONTENT_AUTOOPENGRAPH_OGTYPE_DESC">
+                    <option value="1">PLG_CONTENT_AUTOOPENGRAPH_ARTICLE</option>
+                    <option value="2">PLG_CONTENT_AUTOOPENGRAPH_WEBSITE</option>
+                    <option value="3">PLG_CONTENT_AUTOOPENGRAPH_BOOK</option>
+                    <option value="4">PLG_CONTENT_AUTOOPENGRAPH_PROFILE</option>
+                    <option value="5">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM</option>
+                    <option value="0">Off</option>
+                </field>        
+                <field name="og-type-custom" type="text"  default="" label="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_OGTYPE" description="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_OGTYPE_DESC"/>
+                <field type="spacer" label="PLG_CONTENT_AUTOOPENGRAPH_OG_IMAGE_PRIO" hr="true" />
+                <field name="og-img-prio1" type="list" default="2" label="PLG_CONTENT_AUTOOPENGRAPH_OGIMGPRIO1" description="PLG_CONTENT_AUTOOPENGRAPH_OGIMGPRIO1_DESC">
+                    <option value="1">PLG_CONTENT_AUTOOPENGRAPH_FIRST_IMAGE_FOUND</option>
+                    <option value="2">PLG_CONTENT_AUTOOPENGRAPH_INTRO_IMAGE</option>
+                    <option value="3">PLG_CONTENT_AUTOOPENGRAPH_FULL_ARTICLE_IMAGE</option>
+                    <option value="4">PLG_CONTENT_AUTOOPENGRAPH_IMAGE_WITH_CLASS</option>
+                    <option value="5">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_IMAGE</option>
+                    <option value="0">Off</option>
+                </field>
+                <field name="og-img-prio2" type="list" default="3" label="PLG_CONTENT_AUTOOPENGRAPH_OGIMGPRIO2" description="PLG_CONTENT_AUTOOPENGRAPH_OGIMGPRIO2_DESC">
+                    <option value="1">PLG_CONTENT_AUTOOPENGRAPH_FIRST_IMAGE_FOUND</option>
+                    <option value="2">PLG_CONTENT_AUTOOPENGRAPH_INTRO_IMAGE</option>
+                    <option value="3">PLG_CONTENT_AUTOOPENGRAPH_FULL_ARTICLE_IMAGE</option>
+                    <option value="4">PLG_CONTENT_AUTOOPENGRAPH_IMAGE_WITH_CLASS</option>
+                    <option value="5">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_IMAGE</option>
+                    <option value="0">Off</option>
+                </field>
+                <field name="og-img-prio3" type="list" default="1" label="PLG_CONTENT_AUTOOPENGRAPH_OGIMGPRIO3" description="PLG_CONTENT_AUTOOPENGRAPH_OGIMGPRIO3_DESC">
+                    <option value="1">PLG_CONTENT_AUTOOPENGRAPH_FIRST_IMAGE_FOUND</option>
+                    <option value="2">PLG_CONTENT_AUTOOPENGRAPH_INTRO_IMAGE</option>
+                    <option value="3">PLG_CONTENT_AUTOOPENGRAPH_FULL_ARTICLE_IMAGE</option>
+                    <option value="4">PLG_CONTENT_AUTOOPENGRAPH_IMAGE_WITH_CLASS</option>
+                    <option value="5">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_IMAGE</option>
+                    <option value="0">Off</option>
+                </field>
+                <field name="og-img-class" type="text" default="ogimage" label="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_IMG_CLASS" description="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_IMG_CLASS_DESC"/>
+                <field name="og-img-custom" type="imagelist" directory="images" default="" label="PLG_CONTENT_AUTOOPENGRAPH_SELECT_IMAGE" description="PLG_CONTENT_AUTOOPENGRAPH_SELECT_IMAGE_DESC"/>
+                <field type="spacer" label="PLG_CONTENT_AUTOOPENGRAPH_DESC_SPACER" hr="true" />
+                <field name="og-desc" type="list" default="1" label="PLG_CONTENT_AUTOOPENGRAPH_OGDESC" description="PLG_CONTENT_AUTOOPENGRAPH_OGDESC_DESC">
+                    <option value="1">PLG_CONTENT_AUTOOPENGRAPH_ARTICLE_METADESC</option>
+                    <option value="2">PLG_CONTENT_AUTOOPENGRAPH_ARTICLE_INTROTEXT</option>
+                    <option value="3">PLG_CONTENT_AUTOOPENGRAPH_SITE_DESC</option>
+                    <option value="4">PLG_CONTENT_AUTOOPENGRAPH_CUSTOMDESC</option>
+                    <option value="0">Off</option>
+                </field>        
+                <field name="og-desc-custom" type="text"  default="" label="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_OGDESC" description="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_OGDESC_DESC"/>
+                <field type="spacer" label="PLG_CONTENT_AUTOOPENGRAPH_LOCALE_SPACER" hr="true" />
+                <field name="og-locale" type="list" default="1" label="PLG_CONTENT_AUTOOPENGRAPH_LOCALE" description="PLG_CONTENT_AUTOOPENGRAPH_LOCALE_DESC">
+                    <option value="1">PLG_CONTENT_AUTOOPENGRAPH_SITE_LOCALE</option>
+                    <option value="2">PLG_CONTENT_AUTOOPENGRAPH_ARTICLE_LOCALE</option>
+                    <option value="3">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_LOCALE</option>
+                    <option value="0">Off</option>
+                </field>        
+                <field name="og-locale-custom" type="language" client="site" default="en-GB" label="PLG_CONTENT_AUTOOPENGRAPH_SELECT_LANGUAGE" description="PLG_CONTENT_AUTOOPENGRAPH_SELECT_LANGUAGE_DESC"/>
+                <field type="spacer" label="PLG_CONTENT_AUTOOPENGRAPH_SITENAME_SPACER" hr="true" />
+                <field name="og-sitename" type="list" default="1" label="PLG_CONTENT_AUTOOPENGRAPH_SITENAME" description="PLG_CONTENT_AUTOOPENGRAPH_SITENAME_DESC">
+                    <option value="1">PLG_CONTENT_AUTOOPENGRAPH_JOOMLA_SITENAME</option>
+                    <option value="2">PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_SITENAME</option>
+                    <option value="0">Off</option>
+                </field>        
+                <field name="og-sitename-custom" type="text" default="" label="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_SITENAME" description="PLG_CONTENT_AUTOOPENGRAPH_CUSTOM_SITENAME_DESC"/>
+                <field type="spacer" label="PLG_CONTENT_AUTOOPENGRAPH_CUSTOMTAGS_SPACER" hr="true" />
+                <field name="og-fbappid" type="text" default="" label="PLG_CONTENT_AUTOOPENGRAPH_FBAPPID" description="PLG_CONTENT_AUTOOPENGRAPH_FBAPPID_DESC" />
+            </fieldset>
+        </fields>
+    </config>  
+    <administration>
+        <languages folder="language">
+            <language tag="en-GB">en-GB.plg_content_autoopengraph.ini</language>
+        </languages>
+    </administration>
+</install>
