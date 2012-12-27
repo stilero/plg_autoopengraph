@@ -16,7 +16,6 @@ defined('_JEXEC') or die('Restricted access');
 
 class Opengraph{
     
-    protected $tagsInserted = FALSE;
     protected $title;
     protected $type;
     protected $description;
@@ -79,7 +78,8 @@ class Opengraph{
         if ( $doctype !== 'html' || $content == '') {
             return;
         }
-        $meta = '<meta property="'.$property.'" content="'.htmlentities(strip_tags($content), ENT_QUOTES, "UTF-8").'" />';
+        $sanitizedContent = htmlentities(strip_tags($content), ENT_QUOTES, "UTF-8");
+        $meta = '<meta property="'.$property.'" content="'.$sanitizedContent.'" />';
         $document->addCustomTag($meta);
     }
     
@@ -88,9 +88,6 @@ class Opengraph{
      * @return none
      */
     public function insertTags(){
-        if($this->tagsInserted){
-            return;
-        }
         $this->insertTag(self::$OG_TITLE, $this->title);
         $this->insertTag(self::$OG_TYPE, $this->type);
         $this->insertTag(self::$OG_DESC, $this->description);
@@ -102,7 +99,6 @@ class Opengraph{
         $this->insertTag(self::$OG_TIMEMOD, $this->timeModified);
         $this->insertTag(self::$OG_SECTION, $this->section);
         $this->insertTag(self::$OG_FBAPPID, $this->fbAppId);
-        $this->tagsInserted = TRUE;
     }
 
     public function __set($name, $value) {

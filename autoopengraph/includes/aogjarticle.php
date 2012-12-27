@@ -328,10 +328,10 @@ class AOGJArticle {
 /**
  * For K2 items
  */
-class AOGK2Article extends jArticle{
+class AOGK2Article extends AOGJArticle{
     public function __construct($article) {
         parent::__construct($article);
-        $tempClass->category_title = $this->categoryTitle($article);
+        $this->articleObj->category_title = $this->categoryTitle($article);
     }
     
     protected function introImage($article){
@@ -439,7 +439,7 @@ class AOGK2Article extends jArticle{
 /**
  * For Zoo articles
  */
-class AOGZooArticle extends jArticle{
+class AOGZooArticle extends AOGJArticle{
     public function __construct($article) {
         parent::__construct($article);
     }
@@ -448,7 +448,7 @@ class AOGZooArticle extends jArticle{
 /**
  * For VirtueMart
  */
-class AOGVMArticle extends jArticle{
+class AOGVMArticle extends AOGJArticle{
     
     var $productImage;
     

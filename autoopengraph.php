@@ -2,7 +2,7 @@
 /**
  * Description of AutoOpenGraph
  *
- * @version  1.3
+ * @version  2.0
  * @author Daniel Eliasson (joomla@stilero.com)
  * @copyright  (C) 2012-dec-27 Stilero Webdesign (www.stilero.com)
  * @category Plugins
@@ -21,7 +21,7 @@ class plgContentAutoopengraph extends JPlugin {
     var $Article;
     protected $OpenGraph;
     var $classNames;
-    var $ogTagsAdded;
+    var $ogTagsAdded = FALSE;
     protected $articleClassFolder;
     protected static $articleClassFile = 'AOGJArticle.php';
     protected static $opt_off = 0;
@@ -72,13 +72,17 @@ class plgContentAutoopengraph extends JPlugin {
      * @since 1.6
      */        
     public function onContentPrepare($context, &$article, &$params, $limitstart=0){
-        if( $context != 'com_content.article' && $context !='com_virtuemart.productdetails'){
+        if( $context != 'com_content.article' && $context !='com_virtuemart.productdetails' && $context !='com_k2.item'){
+            return;
+        }
+        if($this->ogTagsAdded){
             return;
         }
         if(!$this->loadClasses($article)){
             return;
         }
-        $this->OpenGraph->insertTags();        
+        $this->OpenGraph->insertTags(); 
+        $this->ogTagsAdded = TRUE;
     }
     
   
@@ -92,10 +96,17 @@ class plgContentAutoopengraph extends JPlugin {
      * @since 1.5
      */
     public function onPrepareContent( &$article, &$params, $limitstart=0 ){
+        if($this->ogTagsAdded){
+            return;
+        }
         if(!$this->loadClasses($article)){
             return;
         }
+        if(!$this->Article->isArticle()){
+            return;
+        }
         $this->OpenGraph->insertTags(); 
+        $this->ogTagsAdded = TRUE;
     }
      
     protected function prepareOpenGraph(){
