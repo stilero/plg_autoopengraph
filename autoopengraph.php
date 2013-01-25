@@ -2,7 +2,7 @@
 /**
  * Description of AutoOpenGraph
  *
- * @version  2.0
+ * @version  2.1
  * @author Daniel Eliasson (joomla@stilero.com)
  * @copyright  (C) 2012-dec-27 Stilero Webdesign (www.stilero.com)
  * @category Plugins
@@ -23,7 +23,7 @@ class plgContentAutoopengraph extends JPlugin {
     var $classNames;
     var $ogTagsAdded = FALSE;
     protected $articleClassFolder;
-    protected static $articleClassFile = 'AOGJArticle.php';
+    protected static $articleClassFile = 'aogjarticle.php';
     protected static $opt_off = 0;
     protected static $opt_title_article = 1;
     protected static $opt_title_custom = 2;
