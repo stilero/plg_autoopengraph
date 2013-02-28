@@ -2,7 +2,7 @@
 /**
  * Description of AutoOpenGraph
  *
- * @version  2.1
+ * @version  2.2
  * @author Daniel Eliasson (joomla@stilero.com)
  * @copyright  (C) 2012-dec-27 Stilero Webdesign (www.stilero.com)
  * @category Plugins
@@ -11,14 +11,14 @@
 
 // no direct access
 defined('_JEXEC') or die('Restricted access'); 
-define('AOG_CLASS_FOLDER', dirname(__FILE__).'/autoopengraph/includes/');
-
+define('AOG_CLASS_FOLDER', dirname(__FILE__).DS.'autoopengraph'.DS.'includes'.DS);
 // import library dependencies
 jimport('joomla.plugin.plugin');
 JLoader::register('Opengraph', AOG_CLASS_FOLDER.'opengraph.php');
 
 class plgContentAutoopengraph extends JPlugin {
     var $Article;
+    var $ArticleClass;
     protected $OpenGraph;
     var $classNames;
     var $ogTagsAdded = FALSE;
@@ -102,7 +102,7 @@ class plgContentAutoopengraph extends JPlugin {
         if(!$this->loadClasses($article)){
             return;
         }
-        if(!$this->Article->isArticle()){
+        if(!$this->ArticleClass->isArticle()){
             return;
         }
         $this->OpenGraph->insertTags(); 
@@ -129,8 +129,8 @@ class plgContentAutoopengraph extends JPlugin {
         if(array_key_exists($component, $this->classNames)){
             $className = $this->classNames[$component];
             JLoader::register( $className, AOG_CLASS_FOLDER.self::$articleClassFile);
-            $articleFactory = new $className($article);
-            $this->Article = $articleFactory->getArticleObj();
+            $this->ArticleClass = new $className($article);
+            $this->Article = $this->ArticleClass->getArticleObj();
             $this->prepareOpenGraph();
             return TRUE;
         }

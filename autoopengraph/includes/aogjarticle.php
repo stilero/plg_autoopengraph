@@ -209,11 +209,17 @@ class AOGJArticle {
     
     protected function isExtensionInstalled($option){
         $db = JFactory::getDbo();
-        $query = $db->getQuery(true);
-        $query->select('extension_id AS id, element AS "option", params, enabled');
-        $query->from('#__extensions');
-        $query->where($query->qn('type') . ' = ' . $db->quote('component'));
-        $query->where($query->qn('element') . ' = ' . $db->quote($option));
+//        $query = $db->getQuery(true);
+//        $query->select('extension_id AS id, element AS "option", params, enabled');
+//        
+//        $query->from('#__extensions');
+//        $query->where($query->qn('type') . ' = ' . $db->quote('component'));
+//        $query->where($query->qn('element') . ' = ' . $db->quote($option));
+        $query = 
+            'SELECT extension_id AS id, element AS "option", params, enabled FROM '
+            .$db->nameQuote('#__extensions').
+            ' WHERE '.$db->nameQuote('type').'= '.$db->quote('component').
+            ' AND '.$db->nameQuote('element').'= '.$db->quote($option);
         $db->setQuery($query);
         //$result = $db->query($query);
         $result = $db->loadObject();
@@ -301,7 +307,7 @@ class AOGJArticle {
             return false;
         }
         $date = JFactory::getDate();
-        $currentDate = $date->toSql();
+        $currentDate = $date->toMySQL();
         if ( ($publishUp > $currentDate) ){
             return FALSE;
         }else if($publishDown < $currentDate && $publishDown != '0000-00-00 00:00:00' && $publishDown!=""){
