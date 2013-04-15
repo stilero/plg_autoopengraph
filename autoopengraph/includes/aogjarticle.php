@@ -54,14 +54,14 @@ class AOGJArticle {
 
     public function image($article){
         $image = $this->introImage($article);
-        if (JDEBUG) JError::raiseNotice( 0,__CLASS__."->".__FUNCTION__.' > introImage='.$image );
+        //if (JDEBUG) JError::raiseNotice( 0,__CLASS__."->".__FUNCTION__.' > introImage='.$image );
         if ($image == '' ){
             $image = $this->fullTextImage($article);
-            if (JDEBUG) JError::raiseNotice( 0,__CLASS__."->".__FUNCTION__.' > fullTextImage='.$image );
+            //if (JDEBUG) JError::raiseNotice( 0,__CLASS__."->".__FUNCTION__.' > fullTextImage='.$image );
         }
         if ($image == '' ){
             $image = $this->firstImageInContent($article);
-            if (JDEBUG) JError::raiseNotice( 0,__CLASS__."->".__FUNCTION__.' > firstImgInCont='.$image );
+            //if (JDEBUG) JError::raiseNotice( 0,__CLASS__."->".__FUNCTION__.' > firstImgInCont='.$image );
         }
         return $image;
     }
@@ -296,7 +296,7 @@ class AOGJArticle {
     }
     
     public function isPublished($article){
-        if(JDEBUG) JFactory::getApplication()->enqueueMessage( var_dump($article));
+        //if(JDEBUG) JFactory::getApplication()->enqueueMessage( var_dump($article));
         $isPublState = $article->state == '1' ? true : false;
         if(!$isPublState){
             return FALSE;
@@ -399,7 +399,7 @@ class AOGK2Article extends AOGJArticle{
     }
     
     public function isPublished($article){
-        if(JDEBUG) JFactory::getApplication()->enqueueMessage( var_dump($article));
+        //if(JDEBUG) JFactory::getApplication()->enqueueMessage( var_dump($article));
         $isPublished = false;
         if(isset($article->published)){
             $isPublished = $article->published;

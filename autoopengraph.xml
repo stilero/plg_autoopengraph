@@ -6,7 +6,7 @@
 	<copyright>Copyright (c) 2012-dec-27 Stilero Webdesign (www.stilero.com). All rights reserved.</copyright>
 	<authorEmail>joomla@stilero.com</authorEmail>
 	<authorUrl>www.stilero.com</authorUrl>
-	<version>1.8</version>
+	<version>1.9</version>
 	<license>GPLv2</license>
 	<description>This plugin automatically adds OpenGraph Tags to your Joomla content.</description>
 	<files>
